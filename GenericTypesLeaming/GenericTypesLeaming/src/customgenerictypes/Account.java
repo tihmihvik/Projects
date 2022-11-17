@@ -1,19 +1,19 @@
 package customgenerictypes;
 
-public class Account {
-    private Object id;
+public class Account<T> {
+    private T id;
     private int sum;
 
-    public Account(Object id, int sum) {
+    public Account(T id, int sum) {
         this.id = id;
         this.sum = sum;
     }
 
-    public Object getId() {
+    public T getId() {
         return id;
     }
 
-    public void setId(Object id) {
+    public void setId(T id) {
         this.id = id;
     }
 
