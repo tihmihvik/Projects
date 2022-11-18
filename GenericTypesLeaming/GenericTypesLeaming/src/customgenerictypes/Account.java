@@ -1,19 +1,24 @@
 package customgenerictypes;
 
-public class Account<T> {
-    private T id;
+public class Account implements Accounttable<String> {
+    private String id;
     private int sum;
 
-    public Account(T id, int sum) {
+    public Account(String id, int sum) {
         this.id = id;
         this.sum = sum;
     }
 
-    public T getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(T id) {
+    @Override
+    public String setId() {
+        return null;
+    }
+
+    public void setId(String id) {
         this.id = id;
     }
 
