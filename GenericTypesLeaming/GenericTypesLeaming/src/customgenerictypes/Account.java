@@ -2,7 +2,13 @@ package customgenerictypes;
 
 public class Account<T> implements Accounttable<T> {
     private T id;
+    private Object sumsit;
     private int sum;
+
+    <S> Account(T id, int sum, S sumsit){
+        this(id,sum);
+        this.sumsit = sumsit;
+    }
 
     public Account(T id, int sum) {
         this.id = id;

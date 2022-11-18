@@ -11,6 +11,8 @@ public class Main {
         int a = (account1.getId()) + 10; // Опасное преобразование типов
         System.out.println(a);
 
+        Account<Integer> account3 = new Account<String>(1300, 100, "sumsit")
+
 
     }
 }
