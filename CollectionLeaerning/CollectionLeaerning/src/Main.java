@@ -35,7 +35,7 @@ public class Main {
         System.out.println(catsList.toString());*/
 
 // LinkedList
-        String str1 = new String("Меня зовут Михаил");
+        /*String str1 = new String("Меня зовут Михаил");
         String str2 = new String("Hello world");
         String str3 = new String("Я люблю Java");
 
@@ -45,9 +45,22 @@ public class Main {
         mihail.add(str3);
         System.out.println(mihail);
         mihail.remove(1);
-        System.out.println(mihail);
+        System.out.println(mihail);*/
 
+// LinkedList на практике
 
+        LinkedList<Car> cars = new LinkedList<>();
+        Car ferrari = new Car("ferrari Spider");
+        Car bugatti = new  Car("Хорошая");
+        Car mersedes = new Car("Тоже не плохая");
+        cars.addAll(Arrays.asList(ferrari, bugatti, mersedes));
+        System.out.println(cars);
+        cars.addFirst(new Car("Зелёная"));
+        System.out.println(cars);
+        cars.addLast(new Car("Красная"));
+        System.out.println(cars);
+        System.out.println(cars.pollFirst());
+        System.out.println(cars);
 
     }
 }
