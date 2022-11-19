@@ -1,18 +1,20 @@
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedList;
 
 public class Main {
     public static void main(String[] args) {
-        Cat[] cats = new Cat[3];
+//         Array
+        /*Cat[] cats = new Cat[3];
          cats[0] = new Cat("Tomas");
          cats[1] = new Cat("Begemat");
          cats[2] = new Cat("Filipp Marcovich");
 
 //         cats[1] = null;
-         System.out.println(Arrays.toString(cats));
-
-        ArrayList<Cat> catsList = new ArrayList<>();
+         System.out.println(Arrays.toString(cats));*/
+// ArrayList
+        /*ArrayList<Cat> catsList = new ArrayList<>();
         for (Cat cat : cats) {
             catsList.add(cat);
         }
@@ -27,12 +29,23 @@ public class Main {
         catsList.set(2, new Cat("Меня сюда вставили"));
         System.out.println(catsList.toString());
         System.out.println(catsList.size());
-
         catsList.removeAll(Arrays.asList(cats, catsList.get(2)));
         System.out.println(catsList.toString());
-
         catsList.removeAll(catsList);
-        System.out.println(catsList.toString());
+        System.out.println(catsList.toString());*/
+
+// LinkedList
+        String str1 = new String("Меня зовут Михаил");
+        String str2 = new String("Hello world");
+        String str3 = new String("Я люблю Java");
+
+        LinkedList<String> mihail = new LinkedList<>();
+        mihail.add(str1);
+        mihail.add(str2);
+        mihail.add(str3);
+        System.out.println(mihail);
+        mihail.remove(1);
+        System.out.println(mihail);
 
 
 
