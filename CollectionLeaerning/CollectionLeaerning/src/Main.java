@@ -1,4 +1,5 @@
 import java.lang.reflect.Array;
+import java.security.Key;
 import java.util.*;
 
 public class Main {
@@ -7,15 +8,15 @@ public class Main {
 
     public static void main(String[] args) {
 //         Array
-        Cat[] cats = new Cat[3];
+        /*Cat[] cats = new Cat[3];
          cats[0] = new Cat("Tomas");
          cats[1] = new Cat("Begemot");
          cats[2] = new Cat("Filipp Marcovich");
 
 //         cats[1] = null;
-         System.out.println(Arrays.toString(cats));
+         System.out.println(Arrays.toString(cats));*/
 // ArrayList
-        ArrayList<Cat> catsList = new ArrayList<>();
+        /*ArrayList<Cat> catsList = new ArrayList<>();
         for (Cat cat : cats) {
             catsList.add(cat);
         }
@@ -33,7 +34,7 @@ public class Main {
 //        catsList.removeAll(Arrays.asList(cats, catsList.get(2)));
         System.out.println(catsList.toString());
 //        catsList.removeAll(catsList);
-        System.out.println(catsList.toString());
+        System.out.println(catsList.toString());*/
 
 // LinkedList
         /*String str1 = new String("Меня зовут Михаил");
@@ -90,7 +91,7 @@ public class Main {
 
 //         Set
 
-        Set<String> states = new HashSet<>();
+        /*Set<String> states = new HashSet<>();
         states.add("Франция");
         states.add("Италия");
         states.add("Германия");
@@ -101,10 +102,29 @@ public class Main {
         states.remove("Франция");
         System.out.println("Set contains" + states + states.size());
         HashSet<Cat> catsHashSet = new HashSet<>(catsList);
-
+// TreSet
         TreeSet<Cat> catTreeSet = new TreeSet<>(catsList);
         System.out.println(catsHashSet);
-        System.out.println(catTreeSet);
+        System.out.println(catTreeSet);*/
+
+//         Map
+
+        Map<Integer, String > statsMap = new  HashMap<>();
+        statsMap.clear();
+        statsMap.put(1, "Германия");
+        statsMap.put(2, "Италия");
+        statsMap.put(3, "Франция");
+        statsMap.put(4, "Россия");
+        statsMap.remove(3);
+
+
+        for (Map.Entry<Integer, String> item : statsMap.entrySet()){
+            System.out.printf("|Key: %d |value: %s \n", item.getKey(), item.getValue());
+        }
+
+        String  first = statsMap.get(2);
+        System.out.println(first);
+        System.out.println(statsMap.keySet());
 
     }
 }
