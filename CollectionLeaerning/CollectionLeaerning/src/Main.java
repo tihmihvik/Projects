@@ -1,8 +1,5 @@
 import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 public class Main {
     public Main() {
@@ -10,21 +7,21 @@ public class Main {
 
     public static void main(String[] args) {
 //         Array
-        /*Cat[] cats = new Cat[3];
+        Cat[] cats = new Cat[3];
          cats[0] = new Cat("Tomas");
-         cats[1] = new Cat("Begemat");
+         cats[1] = new Cat("Begemot");
          cats[2] = new Cat("Filipp Marcovich");
 
 //         cats[1] = null;
-         System.out.println(Arrays.toString(cats));*/
+         System.out.println(Arrays.toString(cats));
 // ArrayList
-        /*ArrayList<Cat> catsList = new ArrayList<>();
+        ArrayList<Cat> catsList = new ArrayList<>();
         for (Cat cat : cats) {
             catsList.add(cat);
         }
 
-        catsList.add(new Cat("Begemot2"));
-        catsList.remove(1);
+        catsList.add(new Cat("Begemot"));
+//        catsList.remove(1);
         Cat cat = catsList.get(0);
         System.out.println(cat);
         System.out.println(catsList.indexOf(cat));
@@ -33,10 +30,10 @@ public class Main {
         catsList.set(2, new Cat("Меня сюда вставили"));
         System.out.println(catsList.toString());
         System.out.println(catsList.size());
-        catsList.removeAll(Arrays.asList(cats, catsList.get(2)));
+//        catsList.removeAll(Arrays.asList(cats, catsList.get(2)));
         System.out.println(catsList.toString());
-        catsList.removeAll(catsList);
-        System.out.println(catsList.toString());*/
+//        catsList.removeAll(catsList);
+        System.out.println(catsList.toString());
 
 // LinkedList
         /*String str1 = new String("Меня зовут Михаил");
@@ -69,7 +66,7 @@ public class Main {
 //         ArrayList vs LinkedList
 
 
-        List<Integer> list = new LinkedList<>();
+        /*List<Integer> list = new LinkedList<>();
         for (int i = 0; i < 5000000; i++){
             list.add(i);
 
@@ -89,7 +86,25 @@ public class Main {
         for (int i = 0; i < 100; i++){
             list2.add(2000000, Integer.MAX_VALUE);
         }
-        System.out.println("Время работы" + (System.currentTimeMillis() - start2));
+        System.out.println("Время работы" + (System.currentTimeMillis() - start2));*/
+
+//         Set
+
+        Set<String> states = new HashSet<>();
+        states.add("Франция");
+        states.add("Италия");
+        states.add("Германия");
+        states.add("Германия");
+        boolean IsAdded = states.add("Германия");
+        System.out.println("Добавление Германия: " + IsAdded);
+        System.out.println("Set contains" + states + states.size());
+        states.remove("Франция");
+        System.out.println("Set contains" + states + states.size());
+        HashSet<Cat> catsHashSet = new HashSet<>(catsList);
+
+        TreeSet<Cat> catTreeSet = new TreeSet<>(catsList);
+        System.out.println(catsHashSet);
+        System.out.println(catTreeSet);
 
     }
 }
