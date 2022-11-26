@@ -13,11 +13,11 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.secondlayout);
 
-        TextView textView = (TextView) findViewById(R.id.normal);
-        textView.setText("Текст из Java кода");
-        textView.setTextColor(Color.BLACK);
+//        TextView textView = (TextView) findViewById(R.id.normal);
+//        textView.setText("Текст из Java кода");
+//        textView.setTextColor(Color.BLACK);
 
 
         /*ConstraintLayout constraintLayout = new ConstraintLayout(this);
