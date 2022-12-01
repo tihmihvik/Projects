@@ -5,6 +5,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -43,6 +44,8 @@ public class MainActivity extends AppCompatActivity {
 //        setContentView(constraintLayout);
     }*/
 
+    private static final String LogcatTag = "Colculator_Activiti";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
         colculator.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Log.d(LogcatTag, "Кнопка нажата");
                 CalculateAnswe();
             }
         });
@@ -68,18 +72,25 @@ public class MainActivity extends AppCompatActivity {
 
         TextView answer = (TextView) findViewById(R.id.result);
 
+        Log.d(LogcatTag, "Все вьюхи на месте.");
+
         float numberOne = Integer.parseInt(numOne.getText().toString());
         float numberTo = Integer.parseInt(numTo.getText().toString());
+        Log.d(LogcatTag, "Данные введены.");
+        Log.d(LogcatTag, "Переменные: " + numberOne + " " + numberTo);
         float solution = 0;
 
         if (add.isChecked()){
             solution = numberOne + numberTo;
+            Log.d(LogcatTag, "Операция сложения выполнена.");
         }
         if (sub.isChecked()){
             solution = numberOne - numberTo;
+            Log.d(LogcatTag, "Операция вычитания выполнена.");
         }
         if (multi.isChecked()){
             solution = numberOne * numberTo;
+            Log.d(LogcatTag, "Операция умножения выполнена.");
         }
         if (divide.isChecked()){
             if (numberTo == 0){
@@ -87,8 +98,10 @@ public class MainActivity extends AppCompatActivity {
                 return;
             }
             solution = numberOne / numberTo;
+            Log.d(LogcatTag, "Операция деления выполнена.");
         }
         answer.setText("Итого: " + solution);
+        Log.d(LogcatTag, "Результат выведен на экран.");
     }
 
 }
