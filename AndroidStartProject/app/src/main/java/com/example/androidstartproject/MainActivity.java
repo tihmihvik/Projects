@@ -45,10 +45,40 @@ public class MainActivity extends AppCompatActivity {
     }*/
 
     private static final String LogcatTag = "Colculator_Activiti";
+    private static final String LifeCycleTeg = "Tad LifeCycle";
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Log.d(LifeCycleTeg, "Я OnStarted and Stated");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.d(LifeCycleTeg, "Я OnStop and Started");
+    }
+
+    protected void onPause() {
+        super.onPause();
+        Log.d(LifeCycleTeg, "Я OnPause and Stated");
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.d(LifeCycleTeg, "Я OnDestroy and Started");
+    }
+
+    protected void onResume() {
+        super.onResume();
+        Log.d(LifeCycleTeg, "Я OnResume and Started");
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.d(LifeCycleTeg, "Я OnCreated и Started");
         setContentView(R.layout.activity_colkulator);
 
         final Button colculator = (Button) findViewById(R.id.collc);
