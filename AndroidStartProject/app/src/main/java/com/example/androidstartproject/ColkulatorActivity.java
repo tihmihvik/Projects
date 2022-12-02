@@ -15,9 +15,9 @@ public class ColkulatorActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_colkulator);
+        setContentView(R.layout.activity_main);
 
-        final Button colculator = (Button) findViewById(R.id.collc);
+        /*final Button colculator = (Button) findViewById(R.id.collc);
         colculator.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -57,6 +57,6 @@ public class ColkulatorActivity extends AppCompatActivity {
             }
             solution = numberOne / numberTo;
         }
-        answer.setText("Итого: " + solution);
+        answer.setText("Итого: " + solution);*/
     }
 }

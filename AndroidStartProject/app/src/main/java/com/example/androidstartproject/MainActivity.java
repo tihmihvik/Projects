@@ -3,6 +3,7 @@ package com.example.androidstartproject;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
@@ -47,6 +48,9 @@ public class MainActivity extends AppCompatActivity {
     private static final String LogcatTag = "Colculator_Activiti";
     private static final String LifeCycleTeg = "Tad LifeCycle";
 
+//    Интент
+
+
     @Override
     protected void onStart() {
         super.onStart();
@@ -87,6 +91,9 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Log.d(LogcatTag, "Кнопка нажата");
                 CalculateAnswe();
+
+                Intent i = new Intent(MainActivity.this, ColkulatorActivity.class); // Написать письмо
+                startActivity(i); // Отправить письмо
             }
         });
     }
