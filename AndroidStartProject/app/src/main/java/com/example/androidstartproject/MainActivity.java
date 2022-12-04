@@ -1,5 +1,9 @@
 package com.example.androidstartproject;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
@@ -12,10 +16,13 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+import java.security.PublicKey;
+
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
    /* @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,7 +34,8 @@ public class MainActivity extends AppCompatActivity {
 //        textView.setTextColor(Color.BLACK);
 
 
-        *//*ConstraintLayout constraintLayout = new ConstraintLayout(this);
+        */
+    /*ConstraintLayout constraintLayout = new ConstraintLayout(this);
         TextView textView = new TextView(this);
         textView.setText("Hello world!");
         textView.setTextSize(26);
@@ -48,9 +56,26 @@ public class MainActivity extends AppCompatActivity {
     private static final String LogcatTag = "Colculator_Activiti";
     private static final String LifeCycleTeg = "Tad LifeCycle";
 
+    private static final int REQ_C = 1;
+    EditText et;
+    private TextView tv;
+    ActivityResultLauncher<Intent> mStartActivityForResult = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            new ActivityResultCallback<ActivityResult>() {
+                @Override
+                public void onActivityResult(ActivityResult result) {
+                    Intent intent = result.getData();
+                    tv.setText(intent.getStringExtra("tv"));
+                    Log.d(LifeCycleTeg, "Тут всё нормально.");
+
+                }
+            }
+    );
+    private View v;
+
 //    Интент
 
-
+/*
     @Override
     protected void onStart() {
         super.onStart();
@@ -77,15 +102,18 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         Log.d(LifeCycleTeg, "Я OnResume and Started");
-    }
+    }*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Log.d(LifeCycleTeg, "Я OnCreated и Started");
-        setContentView(R.layout.activity_colkulator);
+        setContentView(R.layout.secondlayout);
 
-        final Button colculator = (Button) findViewById(R.id.collc);
+        et = (EditText) findViewById(R.id.et);
+
+
+       /* final Button colculator = (Button) findViewById(R.id.collc);
         colculator.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -139,6 +167,32 @@ public class MainActivity extends AppCompatActivity {
         }
         answer.setText("Итого: " + solution);
         Log.d(LogcatTag, "Результат выведен на экран.");
+        */
+
+    }
+
+
+    @Override
+    public void onClick(View view) {
+        Intent i;
+        switch (view.getId()) {
+            case R.id.button1:
+                i = new Intent(this, MainActivity2.class);
+                Log.d(LifeCycleTeg, "Кнопка нажата");
+                startActivity(i);
+                break;
+            case R.id.button2:
+                i = new Intent(this, ToInfActivity.class);
+                String etText = et.getText().toString();
+                i.putExtra("Et", etText);
+                Log.d(LifeCycleTeg, "Кнопка нажата");
+                startActivity(i);
+                break;
+            case R.id.button3:
+                i = new Intent(this, CommBackActivity.class);                ;
+                mStartActivityForResult.launch(i);
+                break;
+        }
     }
 
 }
