@@ -22,6 +22,8 @@ import android.widget.Toast;
 
 import java.security.PublicKey;
 
+import kotlin.jvm.Throws;
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
    /* @Override
@@ -118,7 +120,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             @Override
             public void onClick(View view) {
                 Log.d(LogcatTag, "Кнопка нажата");
-                CalculateAnswe();
+
+                try {
+                    CalculateAnswe();
+                } catch (ArithmeticException e){
+                    Toast.makeText(MainActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();;
+                    finish();
+                }
+
 
                 //Intent i = new Intent(MainActivity.this, ColkulatorActivity.class); // Написать письмо
                 //startActivity(i); // Отправить письмо
@@ -126,7 +135,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         });
     }
 
-    private void CalculateAnswe() {
+    private void CalculateAnswe() throws ArithmeticException{
         EditText numOne = (EditText) findViewById(R.id.editTextNumberDecimal1);
         EditText numTo = (EditText) findViewById(R.id.editTextNumberDecimal2);
 
@@ -145,11 +154,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Log.d(LogcatTag, "Переменные: " + numberOne + " " + numberTo);
         float solution = 0;
 
-        try {
-            int n = 25 / 0;
-        } catch (ArithmeticException e){
-            e.printStackTrace();
-        }
+
+
 
 
         if (add.isChecked()){
@@ -199,6 +205,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 mStartActivityForResult.launch(i);
                 break;
         }
+
+
     }
 
 }
