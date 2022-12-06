@@ -108,20 +108,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Log.d(LifeCycleTeg, "Я OnCreated и Started");
-        setContentView(R.layout.secondlayout);
+        setContentView(R.layout.activity_colkulator);
 
         et = (EditText) findViewById(R.id.et);
 
 
-       /* final Button colculator = (Button) findViewById(R.id.collc);
+        final Button colculator = (Button) findViewById(R.id.collc);
         colculator.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Log.d(LogcatTag, "Кнопка нажата");
                 CalculateAnswe();
 
-                Intent i = new Intent(MainActivity.this, ColkulatorActivity.class); // Написать письмо
-                startActivity(i); // Отправить письмо
+                //Intent i = new Intent(MainActivity.this, ColkulatorActivity.class); // Написать письмо
+                //startActivity(i); // Отправить письмо
             }
         });
     }
@@ -145,6 +145,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Log.d(LogcatTag, "Переменные: " + numberOne + " " + numberTo);
         float solution = 0;
 
+        try {
+            int n = 25 / 0;
+        } catch (ArithmeticException e){
+            e.printStackTrace();
+        }
+
+
         if (add.isChecked()){
             solution = numberOne + numberTo;
             Log.d(LogcatTag, "Операция сложения выполнена.");
@@ -167,7 +174,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
         answer.setText("Итого: " + solution);
         Log.d(LogcatTag, "Результат выведен на экран.");
-        */
 
     }
 
