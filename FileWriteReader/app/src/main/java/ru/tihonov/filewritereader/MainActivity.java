@@ -5,8 +5,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -52,6 +55,33 @@ public class MainActivity extends AppCompatActivity {
         }
     }
     // Открыть файл
+
+    public void opentext (View view){
+        FileInputStream fis = null;
+        TextView textView = (TextView) findViewById(R.id.textView);
+        try {
+            fis = openFileInput(FILE_NAME);
+            Byte[] bytes = new Byte[fis.available()];
+            fis.read(bytes);
+            String text = String(bytes);
+            textView.setText(text);
+        }catch (FileNotFoundException e){
+            e.printStackTrace();
+            Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
+        } catch (IOException e){
+            e.printStackTrace();
+            Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
+        } finally {
+            try {
+                if (fis != null){
+                    fis.close();
+                }
+            } catch (IOException e){
+                e.printStackTrace();
+                Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
 
 
 }
