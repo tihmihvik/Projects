@@ -61,9 +61,9 @@ public class MainActivity extends AppCompatActivity {
         TextView textView = (TextView) findViewById(R.id.textView);
         try {
             fis = openFileInput(FILE_NAME);
-            Byte[] bytes = new Byte[fis.available()];
+            byte[] bytes = new byte[fis.available()];
             fis.read(bytes);
-            String text = String(bytes);
+            String text = new String(bytes);
             textView.setText(text);
         }catch (FileNotFoundException e){
             e.printStackTrace();
