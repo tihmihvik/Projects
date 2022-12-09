@@ -24,6 +24,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
     }
+    private File getExternalFile_Path(){
+        return new File(getExternalFilesDir(null), FILE_NAME);
+    }
 
     // Сохранить файл
     public void saveText(View view){
@@ -31,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         try {
             EditText textBox = (EditText) findViewById(R.id.editor);
             String text = textBox.getText().toString();
-            fos = openFileOutput(FILE_NAME, MODE_PRIVATE);
+            fos = new FileOutputStream(getExternalFile_Path()); //openFileOutput(FILE_NAME, MODE_PRIVATE);
             fos.write(text.getBytes());
             Toast.makeText(this, "Файл успешно сохранён", Toast.LENGTH_LONG).show();;
         }
@@ -59,11 +62,13 @@ public class MainActivity extends AppCompatActivity {
     public void opentext (View view){
         FileInputStream fis = null;
         TextView textView = (TextView) findViewById(R.id.textView);
+        File file = getExternalFile_Path();
         try {
-            fis = openFileInput(FILE_NAME);
+            //fis = openFileInput(FILE_NAME);
+            fis = new FileInputStream(file);
             byte[] bytes = new byte[fis.available()];
             fis.read(bytes);
-            String text = new String(bytes);
+            String text =  new String(bytes);
             textView.setText(text);
         }catch (FileNotFoundException e){
             e.printStackTrace();
