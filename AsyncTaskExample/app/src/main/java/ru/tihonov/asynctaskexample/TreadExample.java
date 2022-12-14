@@ -9,8 +9,13 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
+import java.util.concurrent.Executor;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
 public class TreadExample extends AppCompatActivity {
 
+    ExecutorService service = Executors.newFixedThreadPool(3);
     int mCounter;
 
     Handler handler = new Handler(){
@@ -64,8 +69,9 @@ public void OnClick(View view){
         }
     };
 
-Thread thread = new Thread(runnable);
-thread.start();
+//Thread thread = new Thread(runnable);
+//thread.start();
+    service.execute(runnable);
 
 }
 }
