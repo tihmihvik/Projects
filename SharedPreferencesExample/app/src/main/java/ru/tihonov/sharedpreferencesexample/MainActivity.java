@@ -4,13 +4,15 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends AppCompatActivity {
     EditText et;
     Button btnSave, btnLoad;
     SharedPreferences sharedPreferences;
@@ -24,12 +26,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         et = (EditText) findViewById(R.id.etText);
         btnSave = (Button) findViewById(R.id.btnSave);
         btnLoad = (Button)  findViewById(R.id.btnLoad);
+        loadText();
 
-        btnSave.setOnClickListener(this);
-        btnLoad.setOnClickListener(this);
+        et.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
+                saveText();
+                Log.d(SAVED_TEXT, et.getText().toString());
+                return true;
+            }
+        });
+
+
+        /*btnSave.setOnClickListener(this);
+        btnLoad.setOnClickListener(this);*/
     }
 
-    @Override
+    /*@Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btnSave:
@@ -41,7 +54,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             default:
                 break;
         }
-    }
+    }*/
     private void loadText() {
         sharedPreferences = getPreferences(MODE_PRIVATE);
         String savedText = sharedPreferences.getString(SAVED_TEXT, "Ничего не сохранено в SharedPreferences");
@@ -55,5 +68,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         ed.putString(SAVED_TEXT, et.getText().toString());
         ed.commit();
         Toast.makeText(this, "Текст сохранён", Toast.LENGTH_LONG).show();
+    }
+    protected void onDestroy() {
+        super.onDestroy();
+        saveText();
     }
 }
