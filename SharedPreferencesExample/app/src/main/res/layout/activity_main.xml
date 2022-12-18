@@ -28,7 +28,8 @@
             android:layout_width="wrap_content"
             android:layout_weight="1"
             android:text="Сохранить"
-            android:visibility="invisible"/>
+            android:visibility="visible"
+            />
 
         <Button
             android:id="@+id/btnLoad"
@@ -36,7 +37,8 @@
             android:layout_width="wrap_content"
             android:layout_weight="1"
             android:text="загрузить"
-            android:visibility="invisible"/>
+            android:visibility="visible"
+            />
 
     </LinearLayout>
 
